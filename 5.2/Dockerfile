@@ -23,5 +23,8 @@ RUN groupadd -r $SOLR_USER && \
 
 EXPOSE 8983
 WORKDIR /opt/solr
-USER $SOLR_USER
+
+COPY entrypoint.sh /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]
+
 CMD ["/bin/bash", "-c", "/opt/solr/bin/solr -f"]
